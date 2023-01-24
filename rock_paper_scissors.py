@@ -4,40 +4,56 @@ rock = "Rock"
 paper = "Paper"
 scissors = "Scissors"
 
-print("Choose [1]Rock, [2]Paper, or [3]Scissors")
-valid_moves = ["1", "2", "3", "Rock", "Paper", "Scissors"]
-player_move = input("Your move [1-3]: ")
-if player_move not in valid_moves:
-    raise SystemExit("Invalid input. Try again!")
+player_score = 0
+computer_score = 0
 
-if player_move in ["1", "Rock"]:
-    player_move = "rock"
-elif player_move in ["2", "Paper"]:
-    player_move = "paper"
-else:
-    player_move = "scissors"
+play_again = True
+while play_again:
+    print("Choose [1]Rock, [2]Paper, or [3]Scissors")
+    valid_moves = ["1", "2", "3", "Rock", "Paper", "Scissors"]
+    player_move = input("Your move [1-3]: ")
+    if player_move not in valid_moves:
+        print(f"Final score: Player {player_score} - {computer_score} Computer.")
+        raise SystemExit("Invalid input. Try again!")
 
-computer_random_move = random.randint(1, 3)
-computer_move = ""
+    if player_move in ["1", "Rock"]:
+        player_move = "rock"
+    elif player_move in ["2", "Paper"]:
+        player_move = "paper"
+    else:
+        player_move = "scissors"
 
-if computer_random_move == 1:
-    computer_move = "rock"
-elif computer_random_move == 2:
-    computer_move = "paper"
-else:
-    computer_move = "scissors"
-print(f"The computer chose {computer_move}.")
+    computer_random_move = random.randint(1, 3)
+    computer_move = ""
 
-if player_move == "rock" and computer_move == "scissors":
-    print("You win!")
-elif player_move == "paper" and computer_move == "rock":
-    print("You win!")
-elif player_move == "scissors" and computer_move == "paper":
-    print("You win!")
-elif player_move == computer_move:
-    print("Draw!")
-else:
-    print("You lose!")
+    if computer_random_move == 1:
+        computer_move = "rock"
+    elif computer_random_move == 2:
+        computer_move = "paper"
+    else:
+        computer_move = "scissors"
+    print(f"The computer chose {computer_move}.")
+
+
+    if (player_move == "rock" and computer_move == "scissors") or \
+            (player_move == "paper" and computer_move == "rock") or \
+            (player_move == "scissors" and computer_move == "paper"):
+        print("You win!")
+        player_score += 1
+    elif player_move == computer_move:
+        print("Draw!")
+    else:
+        print("You lose!")
+        computer_score += 1
+
+    print(f"Player {player_score} - {computer_score} Computer.")
+
+    play_again_response = input("Would you like to play again? (yes or no)")
+
+    if play_again_response.lower() != "yes":
+        play_again = False
+print(f"Final score: Player {player_score} - {computer_score} Computer.")
+
 
 
 
