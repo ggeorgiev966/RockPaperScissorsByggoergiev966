@@ -1,4 +1,8 @@
+import colorama
+from colorama import Fore, Back, Style
 import random
+colorama.init()
+
 
 rock = "Rock"
 paper = "Paper"
@@ -13,7 +17,12 @@ while play_again:
     valid_moves = ["1", "2", "3", "Rock", "Paper", "Scissors"]
     player_move = input("Your move [1-3]: ")
     if player_move not in valid_moves:
-        print(f"Final score: Player {player_score} - {computer_score} Computer.")
+        if computer_score > player_score:
+            print(Fore.RED + f"Final score: Player {player_score} - {computer_score} Computer.")
+        elif computer_score == player_score:
+            print(Fore.YELLOW + f"Final score: Player {player_score} - {computer_score} Computer.")
+        else:
+            print(Fore.GREEN + f"Final score: Player {player_score} - {computer_score} Computer.")
         raise SystemExit("Invalid input. Try again!")
 
     if player_move in ["1", "Rock"]:
@@ -32,29 +41,31 @@ while play_again:
         computer_move = "paper"
     else:
         computer_move = "scissors"
-    print(f"The computer chose {computer_move}.")
-
+    print(Fore.BLUE + f"The computer chose {computer_move}.")
 
     if (player_move == "rock" and computer_move == "scissors") or \
             (player_move == "paper" and computer_move == "rock") or \
             (player_move == "scissors" and computer_move == "paper"):
-        print("You win!")
+        print(Fore.GREEN + "You Win!")
         player_score += 1
     elif player_move == computer_move:
-        print("Draw!")
+        print(Fore.YELLOW + "Draw!")
     else:
-        print("You lose!")
+        print(Fore.RED + "You Lose!")
         computer_score += 1
 
     print(f"Player {player_score} - {computer_score} Computer.")
 
-    play_again_response = input("Would you like to play again? (yes or no)")
+    play_again_response = input(Fore.RESET + "Would you like to play again? (yes or no)")
 
     if play_again_response.lower() != "yes":
         play_again = False
-print(f"Final score: Player {player_score} - {computer_score} Computer.")
-
-
-
-
-
+if computer_score > player_score:
+    print(Fore.RED + "Computer Wins!")
+    print(Fore.RED + f"Final score: Player {player_score} - {computer_score} Computer.")
+elif computer_score == player_score:
+    print(Fore.YELLOW + "It's a Draw!")
+    print(Fore.YELLOW + f"Final score: Player {player_score} - {computer_score} Computer.")
+else:
+    print(Fore.GREEN + "Player Wins!")
+    print(Fore.GREEN + f"Final score: Player {player_score} - {computer_score} Computer.")
