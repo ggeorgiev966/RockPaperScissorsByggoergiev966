@@ -56,9 +56,13 @@ while play_again:
 
     print(f"Player {player_score} - {computer_score} Computer.")
 
-    play_again_response = input(Fore.RESET + "Would you like to play again? (yes or no)")
+    print(Fore.RESET + "Would you like to play again? (Y/N): ")
+    play_again_response = input()
 
-    if play_again_response.lower() != "yes":
+    valid_decision = ["y", "Yes", "YES"]
+    if play_again_response.lower() in ('y', 'yes'):
+        play_again = True
+    else:
         play_again = False
 if computer_score > player_score:
     print(Fore.RED + "Computer Wins!")
