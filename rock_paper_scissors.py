@@ -13,7 +13,7 @@ computer_score = 0
 
 play_again = True
 while play_again:
-    print(Fore.GREEN + "Let the Rock, Paper or Scissors game begin!!")
+    print(Fore.GREEN + "Let the 'Rock, Paper or Scissors' game begin!!")
     print(Fore.CYAN + "Now choose: [1]Rock, [2]Paper or [3]Scissors")
     valid_moves = ["1", "2", "3", "Rock", "Paper", "Scissors"]
     player_move = input(Fore.LIGHTYELLOW_EX + "Your move [1-3]: ")
