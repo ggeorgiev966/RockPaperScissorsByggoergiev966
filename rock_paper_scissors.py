@@ -12,19 +12,15 @@ player_score = 0
 computer_score = 0
 
 play_again = True
+
+print(Fore.GREEN + "Let the 'Rock, Paper or Scissors' game begin!!")
 while play_again:
-    print(Fore.GREEN + "Let the 'Rock, Paper or Scissors' game begin!!")
     print(Fore.CYAN + "Now choose: [1]Rock, [2]Paper or [3]Scissors")
     valid_moves = ["1", "2", "3", "Rock", "Paper", "Scissors"]
     player_move = input(Fore.LIGHTYELLOW_EX + "Your move [1-3]: ")
     if player_move not in valid_moves:
-        if computer_score > player_score:
-            print(Fore.RED + f"Final score: Player {player_score} - {computer_score} Computer.")
-        elif computer_score == player_score:
-            print(Fore.YELLOW + f"Final score: Player {player_score} - {computer_score} Computer.")
-        else:
-            print(Fore.GREEN + f"Final score: Player {player_score} - {computer_score} Computer.")
-        raise SystemExit("Invalid input. Try again!")
+        print(Fore.RED + "Invalid input. Try again!")
+        continue
 
     if player_move in ["1", "Rock"]:
         player_move = "rock"
