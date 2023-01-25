@@ -61,6 +61,7 @@ while play_again:
     valid_decision = ["y", "yes", "n", "no"]
     if play_again_response.lower() in ("y", "yes"):
         play_again = True
+        flag = False
     elif play_again_response.lower() in ("n", "no"):
         play_again = False
     else:
